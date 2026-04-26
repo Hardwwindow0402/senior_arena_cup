@@ -1,0 +1,546 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Senior Arena Cup｜王者荣耀 5v5 年级对抗赛</title>
+    <style>
+        :root {
+            --blue: #315f82;
+            --blue-dark: #1f4059;
+            --yellow: #f2b632;
+            --bg: #f6f8fb;
+            --text: #17212b;
+            --muted: #667085;
+            --line: #e5eaf0;
+            --card: #ffffff;
+            --soft: #f9fbfd;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at top right, rgba(242,182,50,.30), transparent 38%), linear-gradient(145deg,#ffffff 0%,#edf4f9 62%,#f8fbfd 100%);
+            padding: 34px 18px 28px;
+            text-align: center;
+            border-bottom: 1px solid var(--line);
+        }
+
+            .hero::before {
+                content: "";
+                position: absolute;
+                inset: auto -60px -100px auto;
+                width: 220px;
+                height: 220px;
+                background: rgba(49,95,130,.08);
+                border-radius: 50%;
+            }
+
+        .logo {
+            width: 112px;
+            max-width: 34vw;
+            display: block;
+            margin: 0 auto 12px;
+            border-radius: 18px;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #eef5fa;
+            color: var(--blue);
+            border: 1px solid #d8e6ef;
+            border-radius: 999px;
+            padding: 5px 12px;
+            font-size: 12px;
+            font-weight: 650;
+            margin-bottom: 10px;
+            white-space: nowrap;
+        }
+
+        h1 {
+            margin: 0;
+            color: var(--blue-dark);
+            font-size: clamp(30px,9vw,54px);
+            line-height: 1.02;
+            letter-spacing: .035em;
+            font-weight: 850;
+        }
+
+        .subtitle {
+            max-width: 640px;
+            margin: 12px auto 0;
+            color: #475467;
+            font-size: 15px;
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 20px auto 0;
+            max-width: 430px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 44px;
+            text-decoration: none;
+            font-weight: 800;
+            border-radius: 14px;
+            padding: 10px 12px;
+            font-size: 15px;
+        }
+
+        .btn-primary {
+            background: var(--yellow);
+            color: #132533;
+        }
+
+        .btn-secondary {
+            background: #fff;
+            color: var(--blue);
+            border: 1px solid #d8e6ef;
+        }
+
+        main {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 16px 14px 88px;
+        }
+
+        .sticky-bar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(246,248,251,.92);
+            backdrop-filter: blur(10px);
+            margin: 0 -14px 14px;
+            padding: 10px 14px;
+            border-bottom: 1px solid rgba(229,234,240,.85);
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 8px;
+        }
+
+            .sticky-bar a {
+                text-align: center;
+                text-decoration: none;
+                color: var(--blue);
+                background: #fff;
+                border: 1px solid var(--line);
+                border-radius: 999px;
+                padding: 7px 6px;
+                font-size: 12px;
+                font-weight: 750;
+                white-space: nowrap;
+            }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 19px;
+            margin-bottom: 14px;
+            box-shadow: 0 6px 18px rgba(15,23,42,.045);
+        }
+
+        h2 {
+            margin: 0 0 12px;
+            font-size: 22px;
+            line-height: 1.25;
+            color: #111827;
+        }
+
+        h3 {
+            margin: 18px 0 8px;
+            font-size: 18px;
+            color: var(--blue);
+        }
+
+        p {
+            margin: 0 0 10px;
+        }
+
+        ul {
+            margin: 8px 0 0;
+            padding-left: 1.15em;
+        }
+
+        li {
+            margin: 6px 0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .info-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            background: var(--soft);
+            border: 1px solid var(--line);
+            border-radius: 15px;
+            padding: 14px 15px;
+        }
+
+            .info-box strong {
+                color: var(--blue);
+                font-size: 13px;
+                white-space: nowrap;
+            }
+
+            .info-box span {
+                text-align: right;
+                font-weight: 750;
+                color: #243446;
+            }
+
+        .highlight {
+            background: #fff8e8;
+            border-left: 4px solid var(--yellow);
+            border-radius: 12px;
+            padding: 12px 13px;
+            margin-top: 12px;
+            font-size: 14px;
+        }
+
+        .qr-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+            margin-top: 16px;
+        }
+
+        .qr-card {
+            text-align: center;
+            background: var(--soft);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 16px;
+        }
+
+            .qr-card img {
+                width: min(72vw,260px);
+                aspect-ratio: 1/1;
+                object-fit: contain;
+                border-radius: 12px;
+                display: block;
+                margin: 0 auto 12px;
+                border: 1px solid var(--line);
+                background: #fff;
+            }
+
+        .qr-title {
+            font-weight: 850;
+            color: var(--blue);
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+
+        .qr-card p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+
+        .timeline {
+            display: grid;
+            gap: 12px;
+        }
+
+        .time-card {
+            background: var(--soft);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 15px;
+        }
+
+            .time-card .date {
+                color: var(--blue);
+                font-weight: 850;
+                font-size: 17px;
+                margin-bottom: 4px;
+            }
+
+        .rounds {
+            display: grid;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .round {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 11px 12px;
+            font-size: 15px;
+        }
+
+            .round strong {
+                color: #111827;
+            }
+
+            .round span {
+                color: var(--yellow);
+                font-weight: 850;
+            }
+
+        .rules-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 9px;
+        }
+
+            .rules-list li {
+                margin: 0;
+                background: var(--soft);
+                border: 1px solid var(--line);
+                border-radius: 13px;
+                padding: 11px 12px;
+                font-size: 14px;
+            }
+
+        .footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px;
+            padding-top: 6px;
+        }
+
+        .bottom-cta {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 20;
+            padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+            background: rgba(255,255,255,.94);
+            border-top: 1px solid var(--line);
+            backdrop-filter: blur(10px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+            .bottom-cta a {
+                min-height: 44px;
+                border-radius: 14px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                font-weight: 850;
+                font-size: 15px;
+            }
+
+            .bottom-cta .signup {
+                background: var(--yellow);
+                color: #132533;
+            }
+
+            .bottom-cta .group {
+                background: var(--blue);
+                color: white;
+            }
+
+        @media (min-width: 700px) {
+            .hero {
+                padding: 46px 20px 38px;
+            }
+
+            .logo {
+                width: 150px;
+            }
+
+            .subtitle {
+                font-size: 17px;
+            }
+
+            main {
+                padding: 22px 18px 92px;
+            }
+
+            .info-grid {
+                grid-template-columns: repeat(3,1fr);
+            }
+
+            .info-box {
+                display: block;
+                min-height: 108px;
+            }
+
+                .info-box span {
+                    text-align: left;
+                    display: block;
+                    margin-top: 6px;
+                }
+
+            .qr-section {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .bottom-cta {
+                left: 50%;
+                transform: translateX(-50%);
+                max-width: 760px;
+                border: 1px solid var(--line);
+                border-bottom: none;
+                border-radius: 18px 18px 0 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <img class="logo" src="logo.png" alt="Senior Arena Cup Logo">
+        <div class="tag">王者荣耀项目｜年级 5v5</div>
+        <h1>SENIOR<br>ARENA CUP</h1>
+        <p class="subtitle">毕业前的最后一段时间，来一场真正属于大家的并肩开团。</p>
+        <div class="quick-actions">
+            <a class="btn btn-primary" href="#signup">扫码报名</a>
+            <a class="btn btn-secondary" href="#schedule">查看赛程</a>
+        </div>
+    </section>
+
+    <main>
+        <nav class="sticky-bar">
+            <a href="#info">概览</a>
+            <a href="#signup">报名</a>
+            <a href="#schedule">赛程</a>
+            <a href="#rules">规则</a>
+        </nav>
+
+        <section class="card" id="info">
+            <div class="info-grid">
+                <div class="info-box">
+                    <strong>比赛项目</strong>
+                    <span>王者荣耀 5v5</span>
+                </div>
+                <div class="info-box">
+                    <strong>比赛时间</strong>
+                    <span>5月2日–5月3日<br>20:00–23:00</span>
+                </div>
+                <div class="info-box">
+                    <strong>报名形式</strong>
+                    <span>班级报名<br>每班 1–2 队</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>活动简介</h2>
+            <p>这不是职业比赛，也不需要每个人都是大神。</p>
+            <p>但这可以是毕业前，我们用另一种方式留下的一场共同记忆。</p>
+            <p>有人负责开团，有人负责守家，有人负责输出，也有人负责在语音里喊一句：<strong>“别急，能打。”</strong></p>
+        </section>
+
+        <section class="card" id="signup">
+            <h2>报名方式</h2>
+            <ul>
+                <li>以<strong>班级为单位</strong>报名。</li>
+                <li>每个班级可报名 <strong>1–2 支队伍</strong>。</li>
+                <li>每队 <strong>5 名首发</strong>，可设置 <strong>1–2 名替补</strong>。</li>
+                <li>本班人数不足时，可以邀请其他班同学组队，但需明确归属班级。</li>
+            </ul>
+            <div class="highlight">
+                报名请扫描王者赛宝二维码；赛程通知、房间信息与临时沟通请加入微信群。
+            </div>
+
+            <div class="qr-section">
+                <div class="qr-card" id="register-qr">
+                    <img src="qrcode.png" alt="王者赛宝报名二维码">
+                    <div class="qr-title">王者赛宝报名</div>
+                    <p>扫描二维码进入赛事页面并完成报名。</p>
+                </div>
+
+                <div class="qr-card" id="wechat-qr">
+                    <img src="wechat.jpg" alt="赛事微信群二维码">
+                    <div class="qr-title">赛事微信群</div>
+                    <p>加入微信群，接收赛程、房间与比赛通知。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" id="schedule">
+            <h2>比赛时间与赛制</h2>
+            <div class="timeline">
+                <div class="time-card">
+                    <div class="date">5月2日 20:00–23:00｜小组赛</div>
+                    <p>采用 <strong>BO1 单局胜负制</strong>。根据报名队伍数量，暂定分为两个小组。</p>
+                    <p>最多暂定 12 支队伍；每支队伍预计进行 3–4 场小组赛，根据积分排名晋级。</p>
+                </div>
+
+                <div class="time-card">
+                    <div class="date">5月3日 20:00–23:00｜淘汰赛</div>
+                    <div class="rounds">
+                        <div class="round"><strong>8进4</strong><span>BO1</span></div>
+                        <div class="round"><strong>4进2</strong><span>BO1</span></div>
+                        <div class="round"><strong>决赛</strong><span>BO3</span></div>
+                        <div class="round"><strong>季军赛</strong><span>BO3</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" id="rules">
+            <h2>基本规则</h2>
+            <ul class="rules-list">
+                <li>参赛选手必须为报名名单内成员，禁止代打。</li>
+                <li>比赛开始前 10 分钟，双方队员需进入通知群等待安排。</li>
+                <li>迟到超过 10 分钟，裁判可判定该队弃权。</li>
+                <li>胜负以游戏内水晶爆炸结果为准。</li>
+                <li>每局结束后，胜方队长需提交结算截图。</li>
+                <li>禁止恶意辱骂、挂机、消极比赛或故意送人头。</li>
+                <li>开局 3 分钟内掉线可申请重开一次；3 分钟后原则上继续比赛。</li>
+                <li>所有争议由裁判组根据实际情况处理。</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>写在最后</h2>
+            <p>比赛可以认真，但请保持基本尊重。</p>
+            <p>这是一场年级活动，不是吵架现场；赢了可以庆祝，输了也可以留下名场面。</p>
+            <p><strong>5月2日，峡谷见。</strong></p>
+        </section>
+
+        <div class="footer">Senior Arena Cup｜王者荣耀 5v5 年级对抗赛</div>
+    </main>
+
+    <div class="bottom-cta">
+        <a class="signup" href="#register-qr">扫码报名</a>
+        <a class="group" href="#wechat-qr">加入微信群</a>
+    </div>
+</body>
+</html>
