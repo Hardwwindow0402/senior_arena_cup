@@ -149,6 +149,19 @@
     p{margin:0 0 10px;}
     .muted{color:var(--muted);font-size:14px;}
 
+    .notice{
+      background:#fff8e8;
+      border:1px solid #f5dfaa;
+      border-left:4px solid var(--yellow);
+      border-radius:16px;
+      padding:13px 14px;
+      margin-bottom:14px;
+      color:#4b5563;
+      font-size:14px;
+    }
+
+    .notice strong{color:#1f4059;}
+
     .project-grid{display:grid;grid-template-columns:1fr;gap:14px;}
 
     .project-card{
@@ -200,7 +213,6 @@
     }
 
     .pill-open{background:var(--yellow);color:#17212b;}
-    .pill-soon{background:#e9eef3;color:#667085;}
 
     .project-meta{display:grid;gap:7px;margin:12px 0 0;position:relative;z-index:1;}
 
@@ -330,6 +342,9 @@
 
     <section class="card" id="projects">
       <h2>比赛项目</h2>
+      <div class="notice">
+        <strong>温馨提示：</strong>赛事项目、时间与赛制可能会根据报名人数、时间安排和实际组织情况进行调整。后续如有变动，我们会统一通知，最终安排以赛前公告和对应项目页为准。
+      </div>
       <div class="project-grid">
         <a class="project-card available" href="honor/">
           <div class="project-top">
@@ -396,16 +411,16 @@
           </div>
         </a>
 
-        <a class="project-card" href="#">
+        <a class="project-card available" href="identityv/">
           <div class="project-top">
             <h3 class="project-title">第五人格</h3>
-            <span class="pill pill-soon">待定</span>
+            <span class="pill pill-open">报名中</span>
           </div>
-          <p class="muted">项目规划中。若报名人数足够，将作为后续项目或表演赛开放。</p>
+          <p class="muted">项目开放报名中。具体赛制与时间将根据报名人数和队伍情况安排。</p>
           <div class="project-meta">
             <div class="meta-row"><strong>时间</strong><span>待定</span></div>
             <div class="meta-row"><strong>赛制</strong><span>待定</span></div>
-            <div class="meta-row"><strong>状态</strong><span>Coming Soon</span></div>
+            <div class="meta-row"><strong>入口</strong><span>查看详情 →</span></div>
           </div>
         </a>
       </div>
@@ -434,6 +449,11 @@
           <strong>CS2｜AP vs AS Invitational</strong>
           <p class="muted">BO3 邀请赛。</p>
         </div>
+        <div class="schedule-item">
+          <div class="schedule-date">待定</div>
+          <strong>第五人格｜报名中</strong>
+          <p class="muted">具体时间与赛制根据报名人数确认。</p>
+        </div>
       </div>
     </section>
 
@@ -447,7 +467,7 @@
       <h2>赛事介绍</h2>
       <p><strong>Senior Arena Cup</strong> 是一个面向年级同学的线上交流赛合集。</p>
       <p>它不需要每个人都是大神。更重要的是：组队、配合、整活、翻盘，以及快毕业前一起留下一个可以被反复提起的夜晚。</p>
-      <p>目前开放项目包括：王者荣耀、无畏契约手游、CS2、和平精英、三角洲行动；第五人格视人数与时间安排决定。</p>
+      <p>目前开放项目包括：王者荣耀、无畏契约手游、CS2、和平精英、三角洲行动、第五人格。</p>
       <div class="about-points">
         <div class="point">项目可以认真打，但请保持尊重和友好。</div>
         <div class="point">比赛以线上为主，具体房间、提交方式与直播信息将在群内或对应项目页通知。</div>
