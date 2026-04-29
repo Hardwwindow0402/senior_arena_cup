@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>无畏契约手游｜Senior Arena Cup</title>
+  <style>
+    :root{
+      --blue:#315f82;
+      --blue-dark:#1f4059;
+      --yellow:#f2b632;
+      --bg:#f6f8fb;
+      --text:#17212b;
+      --muted:#667085;
+      --line:#e5eaf0;
+      --card:#ffffff;
+      --soft:#f9fbfd;
+    }
+
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at top right, rgba(242,182,50,.30), transparent 38%),
+        radial-gradient(circle at bottom left, rgba(49,95,130,.16), transparent 34%),
+        linear-gradient(145deg,#ffffff 0%,#edf4f9 62%,#f8fbfd 100%);
+      padding:36px 18px 30px;
+      text-align:center;
+      border-bottom:1px solid var(--line);
+    }
+
+    .logo{
+      width:112px;
+      max-width:34vw;
+      display:block;
+      margin:0 auto 12px;
+      border-radius:18px;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:#eef5fa;
+      color:var(--blue);
+      border:1px solid #d8e6ef;
+      border-radius:999px;
+      padding:5px 12px;
+      font-size:12px;
+      font-weight:750;
+      margin-bottom:10px;
+      white-space:nowrap;
+    }
+
+    h1{
+      margin:0;
+      color:var(--blue-dark);
+      font-size:clamp(32px,9vw,58px);
+      line-height:1.05;
+      letter-spacing:.02em;
+      font-weight:880;
+    }
+
+    .subtitle{
+      max-width:700px;
+      margin:12px auto 0;
+      color:#475467;
+      font-size:15px;
+    }
+
+    .quick-actions{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin:20px auto 0;
+      max-width:430px;
+    }
+
+    .btn{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:44px;
+      text-decoration:none;
+      font-weight:850;
+      border-radius:14px;
+      padding:10px 12px;
+      font-size:15px;
+    }
+
+    .btn-primary{background:var(--yellow);color:#132533;}
+    .btn-secondary{background:#fff;color:var(--blue);border:1px solid #d8e6ef;}
+
+    main{
+      max-width:760px;
+      margin:0 auto;
+      padding:16px 14px 88px;
+    }
+
+    .sticky-bar{
+      position:sticky;
+      top:0;
+      z-index:10;
+      background:rgba(246,248,251,.92);
+      backdrop-filter:blur(10px);
+      margin:0 -14px 14px;
+      padding:10px 14px;
+      border-bottom:1px solid rgba(229,234,240,.85);
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:8px;
+    }
+
+    .sticky-bar a{
+      text-align:center;
+      text-decoration:none;
+      color:var(--blue);
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:7px 6px;
+      font-size:12px;
+      font-weight:780;
+      white-space:nowrap;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:19px;
+      margin-bottom:14px;
+      box-shadow:0 6px 18px rgba(15,23,42,.045);
+    }
+
+    h2{margin:0 0 12px;font-size:22px;line-height:1.25;color:#111827;}
+    h3{margin:18px 0 8px;font-size:18px;color:var(--blue);}
+    p{margin:0 0 10px;}
+    ul{margin:8px 0 0;padding-left:1.15em;}
+    li{margin:6px 0;}
+    .muted{color:var(--muted);font-size:14px;}
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+    }
+
+    .info-box{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      background:var(--soft);
+      border:1px solid var(--line);
+      border-radius:15px;
+      padding:14px 15px;
+    }
+
+    .info-box strong{color:var(--blue);font-size:13px;white-space:nowrap;}
+    .info-box span{text-align:right;font-weight:750;color:#243446;}
+
+    .highlight{
+      background:#fff8e8;
+      border-left:4px solid var(--yellow);
+      border-radius:12px;
+      padding:12px 13px;
+      margin-top:12px;
+      font-size:14px;
+    }
+
+    .rules-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:grid;
+      gap:9px;
+    }
+
+    .rules-list li{
+      margin:0;
+      background:var(--soft);
+      border:1px solid var(--line);
+      border-radius:13px;
+      padding:11px 12px;
+      font-size:14px;
+    }
+
+    .signup-box{
+      background:linear-gradient(135deg,#1f4059,#315f82);
+      color:white;
+      border-radius:18px;
+      padding:18px;
+      margin-top:14px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .signup-box::after{
+      content:"VAL";
+      position:absolute;
+      right:16px;
+      top:12px;
+      font-weight:900;
+      color:rgba(255,255,255,.13);
+      font-size:44px;
+      letter-spacing:.05em;
+    }
+
+    .signup-box h2{color:white;position:relative;z-index:1;}
+    .signup-box p{color:rgba(255,255,255,.86);position:relative;z-index:1;}
+
+    .signup-button{
+      position:relative;
+      z-index:1;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:44px;
+      margin-top:14px;
+      border-radius:14px;
+      background:var(--yellow);
+      color:#132533;
+      font-weight:900;
+      text-decoration:none;
+    }
+
+    .mode-grid{
+      display:grid;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .mode-card{
+      background:var(--soft);
+      border:1px solid var(--line);
+      border-radius:15px;
+      padding:13px 14px;
+    }
+
+    .mode-card strong{color:var(--blue-dark);}
+
+    .footer{text-align:center;color:var(--muted);font-size:13px;padding-top:6px;}
+
+    .bottom-cta{
+      position:fixed;
+      left:0;
+      right:0;
+      bottom:0;
+      z-index:20;
+      padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+      background:rgba(255,255,255,.94);
+      border-top:1px solid var(--line);
+      backdrop-filter:blur(10px);
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+
+    .bottom-cta a{
+      min-height:44px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      font-weight:850;
+      font-size:15px;
+    }
+
+    .bottom-cta .primary{background:var(--yellow);color:#132533;}
+    .bottom-cta .secondary{background:var(--blue);color:white;}
+
+    @media (min-width:700px){
+      .hero{padding:48px 20px 38px;}
+      .logo{width:150px;}
+      .subtitle{font-size:17px;}
+      main{padding:22px 18px 92px;}
+      .info-grid{grid-template-columns:repeat(3,1fr);}
+      .info-box{display:block;min-height:100px;}
+      .info-box span{text-align:left;display:block;margin-top:6px;}
+      .bottom-cta{left:50%;transform:translateX(-50%);max-width:760px;border:1px solid var(--line);border-bottom:none;border-radius:18px 18px 0 0;}
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <img class="logo" src="logo.png" alt="Senior Arena Cup Logo">
+    <div class="tag">无畏契约手游项目｜报名中</div>
+    <h1>无畏契约手游<br>交流赛</h1>
+    <p class="subtitle">Senior Arena Cup 无畏契约手游项目开放报名。最终比赛方式将根据报名队伍数量与时间安排决定。</p>
+    <div class="quick-actions">
+      <a class="btn btn-primary" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__XTeZfdUREJWMk9FSEZYTzBKMDQ4R0pOMkZQQkszSy4u" target="_blank" rel="noopener">立即报名</a>
+      <a class="btn btn-secondary" href="#format">查看赛制</a>
+    </div>
+  </section>
+
+  <main>
+    <nav class="sticky-bar">
+      <a href="../">主页</a>
+      <a href="#info">概览</a>
+      <a href="#signup">报名</a>
+      <a href="#rules">规则</a>
+    </nav>
+
+    <section class="card" id="info">
+      <h2>项目概览</h2>
+      <div class="info-grid">
+        <div class="info-box"><strong>比赛项目</strong><span>无畏契约手游</span></div>
+        <div class="info-box"><strong>比赛定位</strong><span>年级线上交流赛</span></div>
+        <div class="info-box"><strong>当前状态</strong><span>报名中</span></div>
+      </div>
+      <div class="highlight">
+        本项目将根据报名队伍数量、参赛水平和时间安排，最终决定采用积分赛、交流赛或杯赛形式。后续如有调整，会统一通知，最终安排以赛前公告为准。
+      </div>
+    </section>
+
+    <section class="card" id="signup">
+      <div class="signup-box">
+        <h2>报名入口</h2>
+        <p>点击下方按钮填写无畏契约手游项目报名表。建议由队长统一填写，便于后续联系与赛程安排。</p>
+        <a class="signup-button" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__XTeZfdUREJWMk9FSEZYTzBKMDQ4R0pOMkZQQkszSy4u" target="_blank" rel="noopener">进入无畏契约手游报名表</a>
+      </div>
+    </section>
+
+    <section class="card" id="format">
+      <h2>可能比赛方式</h2>
+      <p>具体形式会根据最终报名情况决定，优先保证大家能顺利参赛、体验完整。</p>
+      <div class="mode-grid">
+        <div class="mode-card">
+          <strong>积分赛</strong>
+          <p class="muted">适合队伍较多、时间较分散的情况，通过多轮成绩累计排名。</p>
+        </div>
+        <div class="mode-card">
+          <strong>交流赛</strong>
+          <p class="muted">适合报名人数不多或水平差异较大的情况，以友好体验和观赛交流为主。</p>
+        </div>
+        <div class="mode-card">
+          <strong>杯赛</strong>
+          <p class="muted">适合队伍数量稳定的情况，采用淘汰赛或小组赛 + 淘汰赛形式。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>暂定安排</h2>
+      <ul class="rules-list">
+        <li>比赛时间：暂定 5月1日晚，具体时间根据报名情况确认。</li>
+        <li>比赛形式：线上进行，房间与对阵安排赛前通知。</li>
+        <li>队伍与赛制：根据最终报名队伍数量确认。</li>
+        <li>若报名人数不足，可能调整为表演赛、友谊赛或并入其他安排。</li>
+      </ul>
+    </section>
+
+    <section class="card" id="rules">
+      <h2>基本规则</h2>
+      <ul class="rules-list">
+        <li>参赛选手需使用本人账号，禁止代打、借号和冒名参赛。</li>
+        <li>比赛期间请保持友好交流，禁止恶意辱骂、骚扰或破坏比赛体验。</li>
+        <li>具体地图、模式、选边、重开与掉线规则将在赛前根据实际赛制统一说明。</li>
+        <li>所有未尽事项，以赛前最终公告和主办方说明为准。</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>写在最后</h2>
+      <p>这个项目会更看重“能打起来、能看懂、能玩得开心”。可以认真打，但也请把体验和氛围放在同样重要的位置。</p>
+      <p><strong>欢迎报名，赛场见。</strong></p>
+    </section>
+
+    <div class="footer">Senior Arena Cup｜无畏契约手游项目</div>
+  </main>
+
+  <div class="bottom-cta">
+    <a class="primary" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__XTeZfdUREJWMk9FSEZYTzBKMDQ4R0pOMkZQQkszSy4u" target="_blank" rel="noopener">无畏契约报名</a>
+    <a class="secondary" href="../">返回主页</a>
+  </div>
+</body>
+</html>
